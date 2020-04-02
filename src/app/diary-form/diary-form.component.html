@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Make a new Entry</h2>
+    <form (ngSubmit)='submitEntry()' #goalForm='ngForm'>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" [(ngModel)]="newDiary.title" name="title"
+                        #title='ngModel' required>
+                    <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                        <p>Title is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="entryDate">Date of Entry</label>
+                    <input type='date' id="entryDate" [(ngModel)]="newDiary.entryDate" name="entryDate"
+                        #entryDate="ngModel" required>
+                    <div [hidden]="entryDate.valid ||entryDate.pristine" class="alert alert-danger">
+                        <p>Date is required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="entry">Entry</label>
+            <textarea class="form-control" id="description" rows="8" [(ngModel)]="newDiary.entry" name="enrty"
+                #entry="ngModel" required></textarea>
+            <div [hidden]="entry.valid || entry.pristine" class="alert alert-danger">
+                <p>Description is required</p>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success">Add New Entry</button>
+    </form>
+    <br>
+    <br>
+</div>

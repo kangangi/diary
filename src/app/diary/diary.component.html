@@ -1,0 +1,18 @@
+<div class="container">
+    <app-diary-form (addEntry)="addNewEntry($event)"></app-diary-form>
+
+
+<ul>
+    <h3>Previous Entries</h3>
+    <li *ngFor = 'let diary of diaries;let i = index'>
+      {{diary.title}} published on {{diary.entryDate|date}}
+      <br>
+      <button (click)='displayEntry(i)' class="btn btn-outline-info">View Entry</button>
+      <br>
+      <app-diary-entry *ngIf='diary.showEntry' [diary]='diary' (isDelete)='deleteEntry($event,i)' ></app-diary-entry >
+       
+    </li>
+    
+</ul>
+
+</div>
